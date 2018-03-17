@@ -11,13 +11,14 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
         crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/knockout-3.4.2.js"></script>
 
     <link rel="stylesheet" href="css/my style.css">
 </head>
 
 <body>
     <div class="container">
-        <div class="map">
+        <div id="map">
         </div>
         <div class="nav">
             <div class="menu" id="xx">
@@ -25,12 +26,10 @@
                     <div class="search_input">
                         <input type="text" placeholder="Search" name="search_input" id="mySearchInput">
                     </div>
-                    <ul id="palces_list">
-                        <li>Ahmed</li>
-                        <li>khaled</li>
-                        <li>mohsen</li>
-                        <li>ali</li>
+                    <ul id="palces_list" data-bind="foreach:locationTitle,value:xxxx,click:showmarker()">
+                        <li data-bind="text:$data"></li>
                     </ul>
+                    
             </div>
             <div class="toggle_button">
                 <span>
@@ -41,8 +40,11 @@
         </div>
     </div>
 
-
     <script src="js/app.js"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCb0AzqaXHS6jEtpNe4CZ2huAR_SIJpVNs&callback=init"
+    async defer></script>
+
 </body>
 
 </html>
