@@ -21,6 +21,7 @@ let locationDetails = [{
         title: 'Cairo tower',
         cat: 'tower'
     },
+   
 
     {
         lat: 30.047847676012697,
@@ -53,20 +54,25 @@ let locationDetails = [{
 
 ];
 
-let titless = [];
 
-locationDetails.forEach(element => {
-    titless.push(element.title);
-});
 
 let myMap;
-let markers = [];
+let  markers = [];
 
 function appVM() {
 
     var self = this;
-    self.locationTitle = ko.observableArray(titless);
     
+
+    self.locationTitle = ko.observableArray();
+
+    self.setLocationTitle = function () {
+        locationDetails.forEach(element => {
+            self.locationTitle.push(element.title);
+        });
+    };
+    self.setLocationTitle();
+
 
     self.initmap = function () {
         var mapOption = {
@@ -118,7 +124,12 @@ function appVM() {
         this.addmarker(element);
     });
 
+    
 
+
+    // google.maps.event.addListener(myMap, 'click', function (e) {
+    //     alert(e.latLng);
+    // });
 }
 
 
@@ -127,34 +138,10 @@ function init() {
     ko.applyBindings(new appVM());
 }
 
+function menuClick(item){
+    var text=$(item).text();
+    console.log(text);
+    console.log(appVM().locationTitle[1]);
+    // markers[locationDetails.indexOf(title=text)]
+    }
 
-///when menu item clicked
-function menuClick(item) {
-    var text = $(item).text();
-    var index = titless.indexOf(text);
-    var mark = markers[index];
-
-    markers.forEach(element => {
-        element.infoPopup.close();
-        element.marker.setAnimation(null);
-    });
-
-    mark.infoPopup.open(myMap, mark.marker);
-    mark.marker.setAnimation(google.maps.Animation.BOUNCE);
-}
-
-
-//// set full window map size
-function setHeight() {
-    windowHeight = $(window).innerHeight();
-    windowWidth = $(window).innerWidth();
-    $('#map').css('min-height', windowHeight);
-    $('#map').css('min-width', windowWidth - 45);
-    $('.nav').css('min-height', windowHeight);
-}
-setHeight();
-
-$(window).resize(function () {
-    setHeight();
-});
-////

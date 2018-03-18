@@ -26,8 +26,8 @@
                     <div class="search_input">
                         <input type="text" placeholder="Search" name="search_input" id="mySearchInput">
                     </div>
-                    <ul id="palces_list" data-bind="foreach:locationTitle,value:xxxx,click:showmarker()">
-                        <li data-bind="text:$data"></li>
+                    <ul id="palces_list"   data-bind="foreach:locationTitle">
+                        <li class="cc" onclick="menuClick(this)" data-bind="text:$data"></li>
                     </ul>
                     
             </div>
