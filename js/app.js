@@ -122,6 +122,8 @@ function appVM() {
             var addrCountry = json.response.venues[0].location.country;
 
             infoPopup.setContent("<div style='text-align: center;'><h1>" + position.title + "</h1><p>" + addr1 + "</p><p>" + addr2 + "</p><p>" + addr3 + "</p><p>" + addrCountry + "</p></div>");
+        }).fail(function(){
+            alert('error in foursquare Api');
         });
 
         marker.addListener('click', function () {
@@ -151,9 +153,18 @@ function appVM() {
 
 
 
-    google.maps.event.addListener(myMap, 'click', function (event) {
-        alert(event.latLng);
+    self.filteredList=ko.computed(function(){
+        locationTitle=[];
+        titless.forEach(element => {
+            if(element.includes(this.toString())){
+                locationTitle.push(element);
+            }
+        });
     });
+
+    // google.maps.event.addListener(myMap, 'click', function (event) {
+    //     alert(event.latLng);
+    // });
 }
 
 
@@ -165,7 +176,9 @@ function init() {
 }
 
 
-
+function mapError(e){
+    alert('error in google map api');
+}
 
 
 

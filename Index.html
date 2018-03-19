@@ -25,11 +25,11 @@
             <div class="menu" id="xx">
                 <h1>Neighborhood Map</h>
                     <div class="search_input">
-                        <input type="text" placeholder="Search" name="search_input" id="mySearchInput">
+                        <input type="text" placeholder="Search" data-bind=" event: { keyUp: filteredList }" name="search_input" id="mySearchInput">
                     </div>
                     <ul id="palces_list"   data-bind="foreach:locationTitle">
                             <!-- menuClick(this) -->
-                        <li class="cc" onclick="" data-bind="text:$data, click: $parent.listselect"></li>
+                        <li class="cc" onclick="" data-bind="text:$data, click: $parent.listselect">error!!!!</li>
                     </ul>
                     
             </div>
@@ -45,7 +45,7 @@
     <script src="js/app.js"></script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCb0AzqaXHS6jEtpNe4CZ2huAR_SIJpVNs&callback=init"
-    async defer ></script>
+    async defer onerror="mapError()"></script>
 
 </body>
 
