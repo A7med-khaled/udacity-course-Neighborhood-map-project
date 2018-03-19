@@ -19,6 +19,7 @@
 <body>
     <div class="container">
         <div id="map">
+            <h1>opps there was an error in google map loading</h1>
         </div>
         <div class="nav">
             <div class="menu" id="xx">
@@ -27,7 +28,8 @@
                         <input type="text" placeholder="Search" name="search_input" id="mySearchInput">
                     </div>
                     <ul id="palces_list"   data-bind="foreach:locationTitle">
-                        <li class="cc" onclick="menuClick(this)" data-bind="text:$data"></li>
+                            <!-- menuClick(this) -->
+                        <li class="cc" onclick="" data-bind="text:$data, click: $parent.listselect"></li>
                     </ul>
                     
             </div>
@@ -43,8 +45,13 @@
     <script src="js/app.js"></script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCb0AzqaXHS6jEtpNe4CZ2huAR_SIJpVNs&callback=init"
-    async defer></script>
+    async defer ></script>
 
 </body>
 
 </html>
+
+
+
+
+
